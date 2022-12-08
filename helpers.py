@@ -3,28 +3,10 @@ import subprocess
 import sys
 
 from typing import Any
-from constants import ALLOWED_OPERANDS, ALLOWED_OPERATIONS, WORK_ITEM_NUMBER_PATTERN, GET_CURRENT_BRANCH_CMD, MAIN_BRANCH_NAME, CREATE_NEW_STORY_BRANCH_CMD
+from constants import WORK_ITEM_NUMBER_PATTERN, GET_CURRENT_BRANCH_CMD, MAIN_BRANCH_NAME, CREATE_NEW_STORY_BRANCH_CMD
 
 
-def get_by_index(arr: list[Any], index: int, default=None):
-    return arr[index] if index < len(arr) else default
-
-
-def unpack_list(arr: list[Any], number_of_elems: int, default=None) -> list[str]:
-    return [*arr, *([default] * (number_of_elems - len(arr)))]
-
-
-def is_valid_operand(operand: str):
-    if operand not in ALLOWED_OPERANDS:
-        raise Exception('Unknown operand')
-
-
-def is_valid_operation(operation: str):
-    if operation not in ALLOWED_OPERATIONS:
-        raise Exception('Unknown operation')
-
-
-def call_cmd(cmd: list[str]):
+def call_cmd(cmd: str):
     cmd = cmd.split(' ')
     process = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
     return process.stdout.decode()

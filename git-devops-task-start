@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
 
-from helpers import get_current_branch_name, is_main_branch, is_valid_devops_work_item_number, create_new_story_branch
+from helpers import get_current_branch_name, is_valid_devops_work_item_number, create_new_story_branch
 from constants import DELIMITER
 
 provided_work_item_number = sys.argv[-1]
@@ -13,6 +13,5 @@ current_branch_name = get_current_branch_name()
 
 if not is_valid_devops_work_item_number(current_branch_name):
   raise Exception('You don\'t seem to be in a story branch. Please switch to a story branch first.')
-
 
 create_new_story_branch(current_branch_name + DELIMITER + provided_work_item_number)
