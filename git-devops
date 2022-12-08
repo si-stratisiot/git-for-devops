@@ -1,0 +1,53 @@
+#!/usr/bin/python3
+import sys
+
+from helpers import unpack_list, get_current_branch_name
+from constants import OPERATIONS_REQUIRE_WORK_ITEM, ALLOWED_OPERANDS, ALLOWED_OPERATIONS
+
+
+argument_list = sys.argv[1:]
+
+operand, operation, work_item_number = unpack_list(argument_list, 3)
+
+
+if operand not in ALLOWED_OPERANDS:
+    raise Exception('Operand should be: %s', ', '.join(ALLOWED_OPERANDS))
+
+
+if operation not in ALLOWED_OPERATIONS:
+    raise Exception('Operand should be: %s', ', '.join(ALLOWED_OPERATIONS))
+
+
+if operation in OPERATIONS_REQUIRE_WORK_ITEM and not work_item_number:
+    operation = operation.upper()
+    raise Exception(
+        '{} operation requires a DevOps work item number.'.format(operation))
+
+
+current_branch = get_current_branch_name()
+
+print(operand, operation, work_item_number)
+
+
+# def create_story_branch(branch_name: str):
+#    git_create_story_branch_cmd = 'git branch {} main'.format(branch_name)
+#    call_cmd(git_create_story_branch_cmd)
+
+
+# def create_task_branch(branch_name: str):
+#    current_branch = get_current_branch()
+#    story_branch_name = get_story_number_from_branch_name(current_branch)
+#    git_create_task_branch_cmd = 'git branch {1}-AB#{0} {1}'.format(
+#        branch_name, story_branch_name)
+#    call_cmd(git_create_task_branch_cmd)
+
+
+# def is_complete_branch(branch_name: str):
+#    complete_brach_pattern = 'ab#[0-9]+-ab#[0-9]+'
+#    result = re.match(complete_brach_pattern, branch_name, re.IGNORECASE)
+#    return True if result else False
+
+
+# current_branch = get_current_branch()
+
+# print(get_story_number_from_branch_name(current_branch))
