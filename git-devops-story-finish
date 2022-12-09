@@ -1,6 +1,16 @@
 #!/usr/bin/python3
 
-from helpers import get_current_branch_name, is_main_branch, is_valid_devops_work_item_number, create_new_story_branch
+from helpers import create_story_pr, fetch_remote_changes, get_current_branch_name, get_story_number_from_branch_name, is_story_branch, push_local_changes
+
 
 current_branch_name = get_current_branch_name()
 
+if not is_story_branch(current_branch_name):
+  raise Exception('Your current branch doesn\'t seem to be related to a story')
+
+story_number = get_story_number_from_branch_name(current_branch_name)
+
+fetch_remote_changes()
+push_local_changes()
+
+create_story_pr(story_number)
