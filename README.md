@@ -2,7 +2,8 @@ TODO: what's the git requirements for --help option
 
 requirements:
 - Python 3 installed
--
+- gh pr create
+- gh auth login
 
 1. install the deps
 2. add the folder to PATH
