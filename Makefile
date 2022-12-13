@@ -6,10 +6,7 @@ all: executables path python
 
 executables:
 # create executables
-	chmod +x git-devops-story-start
-	chmod +x git-devops-story-finish
-	chmod +x git-devops-task-start
-	chmod +x git-devops-task-finish
+	chmod +x git-devops
 
 
 path:
@@ -19,7 +16,4 @@ path:
 
 python:
 # point to python executable
-	sed -i '' '1s/^/\#!$(PYTHON_PATH)\n/' git-devops-story-start
-	sed -i '' '1s/^/\#!$(PYTHON_PATH)\n/' git-devops-story-finish
-	sed -i '' '1s/^/\#!$(PYTHON_PATH)\n/' git-devops-task-start
-	sed -i '' '1s/^/\#!$(PYTHON_PATH)\n/' git-devops-task-finish
+	sed -i '' '1s/^/\#!$(PYTHON_PATH)\n/' git-devops

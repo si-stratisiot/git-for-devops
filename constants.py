@@ -22,8 +22,20 @@ GET_CURRENT_BRANCH_CMD = 'git branch --show-current'
 
 FETCH_ALL_CMD = 'git fetch --all'
 
-CREATE_NEW_STORY_BRANCH_CMD = 'git checkout -b {}'
+CREATE_NEW_BRANCH_CMD = 'git checkout -b {}'
 
 PUSH_CURRENT_CHANGES_CMD = 'git push -u origin HEAD'
 
 CREATE_PULL_REQUEST_CMD = 'gh pr create -w -t {} -B {}'
+
+STORY_OPERAND = 'story'
+
+TASK_OPERAND = 'task'
+
+START_OPERATION = 'start'
+
+COMPLETE_OPERATION = 'complete'
+
+ALLOWED_OPERATIONS = [START_OPERATION, COMPLETE_OPERATION]
+
+ALLOWED_OPERANDS = [STORY_OPERAND, TASK_OPERAND]

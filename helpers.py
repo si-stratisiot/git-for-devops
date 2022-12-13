@@ -1,7 +1,7 @@
 import re
 import subprocess
 
-from constants import CREATE_PULL_REQUEST_CMD, FETCH_ALL_CMD, GET_STORY_NUMBER_PATTERN, GET_TASK_NUMBER_PATTERN, IS_TASK_BRANCH_PATTERN, PUSH_CURRENT_CHANGES_CMD, SPACE_CHAR_REPLACEMENT, WORK_ITEM_NUMBER_PATTERN, GET_CURRENT_BRANCH_CMD, MAIN_BRANCH_NAME, CREATE_NEW_STORY_BRANCH_CMD, IS_STORY_BRANCH_PATTERN
+from constants import CREATE_PULL_REQUEST_CMD, FETCH_ALL_CMD, GET_STORY_NUMBER_PATTERN, GET_TASK_NUMBER_PATTERN, IS_TASK_BRANCH_PATTERN, PUSH_CURRENT_CHANGES_CMD, SPACE_CHAR_REPLACEMENT, WORK_ITEM_NUMBER_PATTERN, GET_CURRENT_BRANCH_CMD, MAIN_BRANCH_NAME, CREATE_NEW_BRANCH_CMD, IS_STORY_BRANCH_PATTERN
 
 
 def call_cmd(cmd: str):
@@ -19,8 +19,8 @@ def get_current_branch_name():
     return call_cmd(GET_CURRENT_BRANCH_CMD).replace("\n", "")
 
 
-def create_new_story_branch(branch_name: str):
-    return call_cmd(CREATE_NEW_STORY_BRANCH_CMD.format(branch_name))
+def create_new_branch(branch_name: str):
+    return call_cmd(CREATE_NEW_BRANCH_CMD.format(branch_name))
 
 
 def is_story_branch(branch_name: str):
@@ -68,3 +68,7 @@ def get_task_number_from_branch_name(branch_name: str):
     if not result:
         raise Exception('Looks like you\'re not in a task branch')
     return result.group()
+
+
+def unpack_list(arr, number_of_elems: int, default=None):
+    return [*arr, *([default] * (number_of_elems - len(arr)))]
