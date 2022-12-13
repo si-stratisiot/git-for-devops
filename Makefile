@@ -14,7 +14,7 @@ executables:
 
 path:
 # add folder to path
-	echo "\nexport PATH="${PWD}:${PATH}"" >> ~/.zshrc
+	echo '\nexport PATH="${PWD}:$$PATH"' >> ~/.zshrc
 
 
 python:
