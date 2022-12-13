@@ -1,6 +1,28 @@
 TODO: what's the git requirements for --help option
 
-requirements:
+
+## Requirements:
+
+Make sure you have Python 3 installed
+
+
+Git Devops extension relies on `gh` - [GitHub CLI](https://cli.github.com/) tool
+
+Install `gh` on Mac:
+
+```brew install gh```
+
+[Login](https://cli.github.com/manual/gh_auth_login) with your GitHub account:
+
+```gh auth login```
+
+
+## Installation:
+
+1. `cd` into Git Devops project folder in your terminal
+2.
+
+Requirements:
 - Python 3 installed
 - gh pr create
 - gh auth login

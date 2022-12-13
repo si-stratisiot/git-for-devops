@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-
 from helpers import create_task_pr, fetch_remote_changes, get_current_branch_name, get_story_number_from_branch_name, get_task_number_from_branch_name, is_story_branch, is_task_branch, push_local_changes
 
 

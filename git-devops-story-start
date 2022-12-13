@@ -1,7 +1,9 @@
-#!/usr/bin/python3
+#!/Users/serghei.ivanov/.pyenv/shims/python3
+
 import sys
 
 from helpers import get_current_branch_name, is_main_branch, is_valid_devops_work_item_number, create_new_story_branch
+
 
 provided_work_item_number = sys.argv[-1]
 
