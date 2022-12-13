@@ -1,7 +1,7 @@
 PYTHON_PATH = $(shell which python3 | sed 's/\//\\\//g')
 
 # make all
-all: executables path
+all: executables path python
 
 
 executables:
@@ -20,3 +20,6 @@ path:
 python:
 # point to python executable
 	sed -i '' '1s/^/\#!$(PYTHON_PATH)\n/' git-devops-story-start
+	sed -i '' '1s/^/\#!$(PYTHON_PATH)\n/' git-devops-story-finish
+	sed -i '' '1s/^/\#!$(PYTHON_PATH)\n/' git-devops-task-start
+	sed -i '' '1s/^/\#!$(PYTHON_PATH)\n/' git-devops-task-finish

@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 
 from helpers import create_story_pr, fetch_remote_changes, get_current_branch_name, get_story_number_from_branch_name, is_story_branch, push_local_changes
 
