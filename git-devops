@@ -3,12 +3,11 @@
 import sys
 
 from helpers import get_current_branch_name, unpack_list
-from constants import ALLOWED_OPERANDS, ALLOWED_OPERATIONS, START_OPERATION
+from constants import ALLOWED_OPERANDS, ALLOWED_OPERATIONS, COMPLETE_OPERATION, START_OPERATION, STORY_OPERAND, TASK_OPERAND
 
-from git_devops_story_start import start_story
-from git_devops_story_finish import finish_story
-from git_devops_task_start import start_task
-from git_devops_task_finish import finish_task
+from story import Story
+from task import Task
+
 
 argument_list = sys.argv[1:]
 
@@ -23,8 +22,25 @@ if operation not in ALLOWED_OPERATIONS:
 if operation == START_OPERATION and not work_item_number:
   raise Exception('{} operation requires a DevOps work item number.'.format(operation.upper()))
 
-current_branch = get_current_branch_name()
+current_branch_name = get_current_branch_name()
 
 
 if operand == STORY_OPERAND:
-  pass
+  story = Story(current_branch_name)
+
+  if operation == START_OPERATION:
+    story.start(work_item_number)
+
+  if operation == COMPLETE_OPERATION:
+    story.finish()
+
+
+if operand == TASK_OPERAND:
+  task = Task(current_branch_name)
+
+  if operation == START_OPERATION:
+    task.start(work_item_number)
+
+  if operation == COMPLETE_OPERATION:
+    task.finish()
+

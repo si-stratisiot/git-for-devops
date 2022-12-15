@@ -43,13 +43,13 @@ def push_local_changes():
 
 def create_story_pr(story_number: str):
     title = 'AB#{}{}completed'.format(story_number, SPACE_CHAR_REPLACEMENT)
-    return call_cmd(CREATE_PULL_REQUEST_CMD.format(title, MAIN_BRANCH_NAME))
+    return call_cmd(CREATE_PULL_REQUEST_CMD.format(title, MAIN_BRANCH_NAME, story_number))
 
 
 def create_task_pr(story_number: str, task_number: str):
     title = 'AB#{story}{space}AB#{task}{space}completed'.format(
         story=story_number, task=task_number, space=SPACE_CHAR_REPLACEMENT)
-    return call_cmd(CREATE_PULL_REQUEST_CMD.format(title, story_number))
+    return call_cmd(CREATE_PULL_REQUEST_CMD.format(title, story_number, task_number))
 
 
 def is_main_branch(branch_name: str):
