@@ -1,11 +1,12 @@
 import re
 import subprocess
+import sys
 
 from constants import CREATE_PULL_REQUEST_CMD, FETCH_ALL_CMD, GET_STORY_NUMBER_PATTERN, GET_TASK_NUMBER_PATTERN, IS_TASK_BRANCH_PATTERN, PUSH_CURRENT_CHANGES_CMD, SPACE_CHAR_REPLACEMENT, WORK_ITEM_NUMBER_PATTERN, GET_CURRENT_BRANCH_CMD, MAIN_BRANCH_NAME, CREATE_NEW_BRANCH_CMD, IS_STORY_BRANCH_PATTERN
 
 
 def call_cmd(cmd: str):
-    cmd = map( lambda c: c.replace(SPACE_CHAR_REPLACEMENT, ' '), cmd.split(' '))
+    cmd = map(lambda c: c.replace(SPACE_CHAR_REPLACEMENT, ' '), cmd.split(' '))
     process = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
     return process.stdout.decode()
 
@@ -72,3 +73,7 @@ def get_task_number_from_branch_name(branch_name: str):
 
 def unpack_list(arr, number_of_elems: int, default=None):
     return [*arr, *([default] * (number_of_elems - len(arr)))]
+
+
+def exit_with_failure(message: str):
+    sys.exit(message)

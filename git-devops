@@ -2,7 +2,7 @@
 
 import sys
 
-from helpers import get_current_branch_name, unpack_list
+from helpers import exit_with_failure, get_current_branch_name, unpack_list
 from constants import ALLOWED_OPERANDS, ALLOWED_OPERATIONS, COMPLETE_OPERATION, START_OPERATION, STORY_OPERAND, TASK_OPERAND
 
 from story import Story
@@ -14,13 +14,13 @@ argument_list = sys.argv[1:]
 operand, operation, work_item_number = unpack_list(argument_list, 3)
 
 if operand not in ALLOWED_OPERANDS:
-    raise Exception('Operand should be one of: %s', ', '.join(ALLOWED_OPERANDS))
+    exit_with_failure('Operand should be one of: %s' % ', '.join(ALLOWED_OPERANDS))
 
 if operation not in ALLOWED_OPERATIONS:
-    raise Exception('Operand should be one of: %s', ', '.join(ALLOWED_OPERATIONS))
+    exit_with_failure('Operand should be one of: %s' % ', '.join(ALLOWED_OPERATIONS))
 
 if operation == START_OPERATION and not work_item_number:
-  raise Exception('{} operation requires a DevOps work item number.'.format(operation.upper()))
+  exit_with_failure('{} operation requires a DevOps work item number.'.format(operation.upper()))
 
 current_branch_name = get_current_branch_name()
 
