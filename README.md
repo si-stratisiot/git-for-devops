@@ -83,6 +83,7 @@ There are several prerequisites that need to be met before using the extension:
 
 ## TODO
 - Add `--help` option
+- Add unit tests
 
 
 
