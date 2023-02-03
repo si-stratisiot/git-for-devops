@@ -14,7 +14,7 @@ As we use GitOps in our organization as primary task management tool it would be
 
 ## Examples
 
-Suppose you have a story with ID `1234` and tasks with IDs `5678` and `8765` that belong to the story `1234`.
+Suppose we have a story with ID `1234` and tasks with IDs `5678` and `8765` that belong to the story `1234`.
 
 ### 1. Starting a Story
 To start working on a story with ID `1234`, run the following command to create a branch named `1234` and set it as the current branch:
