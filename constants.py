@@ -24,6 +24,8 @@ FETCH_ALL_CMD = 'git fetch --all'
 
 CREATE_NEW_BRANCH_CMD = 'git checkout -b {}'
 
+CHANGE_BRANCH_CMD = 'git checkout {}'
+
 PUSH_CURRENT_CHANGES_CMD = 'git push -u origin HEAD'
 
 CREATE_PULL_REQUEST_CMD = 'gh pr create -w -t {} -B {} -H {}'
