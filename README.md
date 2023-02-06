@@ -77,13 +77,14 @@ There are several prerequisites that need to be met before using the extension:
   make
   ```
   - This will make `git-devops` file executable
-  - Add the current folder to `PATH` so that git can find the extension
+  - Add the current folder to `PATH` so that git can find the git-devops file
   - Add python shebang to the `git-devops` file so it can be executed as a script (i.e. `#!/usr/bin/env python3`)
 
 
 ## TODO
 - Add `--help` option
 - Add unit tests
+- Add auto-completion
 
 
 

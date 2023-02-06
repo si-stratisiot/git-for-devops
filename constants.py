@@ -26,6 +26,8 @@ CREATE_NEW_BRANCH_CMD = 'git checkout -b {}'
 
 PUSH_CURRENT_CHANGES_CMD = 'git push -u origin HEAD'
 
+PUSH_BANCH_CHANGES_CMD = 'git push -u origin {}'
+
 CREATE_PULL_REQUEST_CMD = 'gh pr create -w -t {} -B {} -H {}'
 
 STORY_OPERAND = 'story'

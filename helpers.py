@@ -2,7 +2,7 @@ import re
 import subprocess
 import sys
 
-from constants import CREATE_PULL_REQUEST_CMD, FETCH_ALL_CMD, GET_STORY_NUMBER_PATTERN, GET_TASK_NUMBER_PATTERN, IS_TASK_BRANCH_PATTERN, PUSH_CURRENT_CHANGES_CMD, SPACE_CHAR_REPLACEMENT, WORK_ITEM_NUMBER_PATTERN, GET_CURRENT_BRANCH_CMD, MAIN_BRANCH_NAME, CREATE_NEW_BRANCH_CMD, IS_STORY_BRANCH_PATTERN
+from constants import CREATE_PULL_REQUEST_CMD, FETCH_ALL_CMD, GET_STORY_NUMBER_PATTERN, GET_TASK_NUMBER_PATTERN, IS_TASK_BRANCH_PATTERN, PUSH_BANCH_CHANGES_CMD, PUSH_CURRENT_CHANGES_CMD, SPACE_CHAR_REPLACEMENT, WORK_ITEM_NUMBER_PATTERN, GET_CURRENT_BRANCH_CMD, MAIN_BRANCH_NAME, CREATE_NEW_BRANCH_CMD, IS_STORY_BRANCH_PATTERN
 
 
 def call_cmd(cmd: str):
@@ -42,15 +42,19 @@ def push_local_changes():
     return call_cmd(PUSH_CURRENT_CHANGES_CMD)
 
 
+def push_branch_changes(branch_name: str):
+    return call_cmd(PUSH_BANCH_CHANGES_CMD.format(branch_name))
+
+
 def create_story_pr(story_number: str):
     title = 'AB#{}{}completed'.format(story_number, SPACE_CHAR_REPLACEMENT)
     return call_cmd(CREATE_PULL_REQUEST_CMD.format(title, MAIN_BRANCH_NAME, story_number))
 
 
-def create_task_pr(story_number: str, task_number: str):
+def create_task_pr(story_number: str, task_number: str, task_branch_name: str):
     title = 'AB#{story}{space}AB#{task}{space}completed'.format(
         story=story_number, task=task_number, space=SPACE_CHAR_REPLACEMENT)
-    return call_cmd(CREATE_PULL_REQUEST_CMD.format(title, story_number, task_number))
+    return call_cmd(CREATE_PULL_REQUEST_CMD.format(title, story_number, task_branch_name))
 
 
 def is_main_branch(branch_name: str):
