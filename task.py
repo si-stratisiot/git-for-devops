@@ -1,4 +1,4 @@
-from helpers import change_branch, create_new_branch, create_task_pr, exit_with_failure, fetch_remote_changes, get_story_number_from_branch_name, get_task_number_from_branch_name, is_story_branch, is_task_branch, is_valid_devops_work_item_number, push_local_changes
+from helpers import change_branch, create_new_branch, create_task_pr, exit_with_failure, fetch_remote_changes, get_story_number_from_branch_name, get_task_number_from_branch_name, is_story_branch, is_task_branch, is_valid_devops_work_item_number, push_branch_changes, push_local_changes
 from constants import DELIMITER
 from operand import Operand
 
@@ -32,6 +32,7 @@ class Task(Operand):
     fetch_remote_changes()
     push_local_changes()
 
+    push_branch_changes(story_number)
     change_branch(story_number)
 
-    create_task_pr(story_number, task_number)
+    create_task_pr(story_number, task_number, self.current_branch_name)
